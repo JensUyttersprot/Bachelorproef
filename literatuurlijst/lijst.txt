@@ -1,0 +1,41 @@
+# Bronnen literatuurstudie
+
+Lijst van boeken, artikels en documenten die ik wil lezen voor de literatuurstudie.
+Dit is geen officiële bronnenlijst, die is te vinden als biblio.bib (gemaakt met JabRef)in de map bachelorproef.
+
+### Boeken
+
+##### Ansible
+* Daniel Hall - Ansible Configuration Management: Leverage the power of Ansible to quickly configure your Linux infrastructure with ease (2nd Edition) [Packt]
+* Lorin Hochstein - Ansible Up & Running: Automating configuration management and deployment the easy way [O'Reilly]
+* Gourav Shah - Ansible Playbook Essentials: Design automation blueprints using Ansible's playbooks to orchestrate and manage your multitier infrastructure [Packt]
+* Jesse Keating - Mastering Ansible: Design, develop, and solve real world automation and orchestration needs by unlocking the automation capabilities of Ansible [Packt]
+ 
+##### Chef
+* Mayank Joshi - Mastering Chef: Build, deploy, and manage your IT infrastructure to deliver a successful automated system with Chef in any environment [Packt]
+* Mischa Taylor & Seth Vargo - Learning Chef: A guide to configuration management and automation [O'Reilly]
+* Rishabh Sharma & Mitesh Soni - Learning Chef: Automate your infrastructure using code and leverage DevOps with Chef [Packt]
+* Navin Sabharwal & Manak Wadha - Chef Opscode: A hands-on approach to Chef [Apress]
+* Jon Cowie - Customizing Chef - Getting the most out of your infrastructure automation [O'Reilly]
+* Stephen Nelson Smith - Test Driven Infrastructure with Chef: Bring behavior driven development to infrastructure as a code (2nd Edition) [O'Reilly]
+* Matthias Marschall - Chef Infrastructure Automation Cookbook: Over 80 delicious recipes to automate your cloud and server infrastructure with Chef [Packt]
+* John Ewart - Managing Windows Servers with Chef: Harness the power of Chef to automate management of Windows based systems using hands on examples [Packt]
+
+
+##### Puppet
+* Chris Barbour - Puppet Best Practices: Design patterns for maintainable code [O'Reilly]
+* Felix Frank & Martin Alfke - Puppet 4 Essentials: Acquire the skills to manage your IT infrastructure effectively with Puppet (2nd Edition) [Packt]
+* James Turnbull - Pulling Strings with Puppet: Configuration management made easy [Apress]
+* John Arundel - Puppet 3: Start from scratch with the Puppet configuration management system, and learn how to fully utilize Puppet through simple, practical examples [Packt]
+* Spencer Krum, William Van Hevelingen, Ben Kero, James Turnbull & Jeffrey McCune - Pro Puppet [Apress]
+* Thomas Uphill - Mastering Puppet: Master Puppet for configuration management of your systems in an enterprise deployment (2nd Edition) [Packt]
+* Jo Rhett - Learning Puppet: A guide to configuration management and automation [O'Reilly]
+* Dan Bode & Nan Liu - Puppet Types and Providers [O'Reilly]
+* Thomas Uphill & John Arundel - Puppet Cookbook: Jump start your Puppet deployment using engaging and practical recipes (3d Edition) [Packt]
+* Felix Frank - Puppet Essentials - Get up and running quickly using the power of Puppet to manage your IT infrastructure [Packt]
+* Scott Coulton - Puppet for Containerization - Lean about configuration management and gain complete control of your Docker containers using Puppet [Packt]
+* Jason Slangle - Learning Puppet Security: Secure your IT environments with the powerful security rools of Puppet [Packt]
+
+### Wetenschappelijke artikels
+
+### Links
