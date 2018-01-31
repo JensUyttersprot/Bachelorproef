@@ -1,0 +1,145 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachelorproef
+%==============================================================================
+% Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
+% Auteur: Jens Buysse, Bert Van Vreckem
+
+% TODO: Compileren document:
+% 1) Vervang ‘naam_voornaam’ in de bestandsnaam door je eigen naam, bv.
+%    buysse_jens_voorstel.tex
+% 2) latexmk -pdf naam_voornaam_voorstel.tex
+% 3) biber naam_voornaam_voorstel
+% 4) latexmk -pdf naam_voornaam_voorstel.tex (1 keer)
+
+\documentclass[fleqn,10pt]{voorstel}
+
+%------------------------------------------------------------------------------
+% Metadata over het artikel
+%------------------------------------------------------------------------------
+
+\JournalInfo{HoGent Bedrijf en Organisatie} % Journal information
+\Archive{Bachelorproef 2017 - 2018} % Additional notes (e.g. copyright, DOI, review/research article)
+
+%---------- Titel & auteur ----------------------------------------------------
+
+% TODO: geef werktitel van je eigen voorstel op
+\PaperTitle{Een vergelijkende studie van moderne configuration management tools}
+\PaperType{Onderzoeksvoorstel Bachelorproef} % Type document
+
+% TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
+\Authors{Jens Uyttersprot} % Authors
+\affiliation{\textbf{Contact:}
+  \href{mailto:jens.uyttersprot.v4158@student.hogent.be}{jens.uyttersprot.v4158@student.hogent.be};}
+
+%---------- Abstract ----------------------------------------------------------
+
+  \Abstract{De nood aan het verwerken van steeds grotere hoeveelheden data heeft geleid tot de ontwikkeling van configuration management tools. Deze automation services vereenvoudigen het beheer van server clusters en zorgen voor een continuous delivery process. Moderne netwerkinfrastructuren zijn hierdoor steeds beschikbaar, schaalbaar en transparant.
+
+Er bestaat reeds een groot aanbod aan verschillende configuration management tools, die hebben vaak een verschillend doeleinde. In mijn onderzoek wil ik de verschillende tools bestuderen, toepassen en testen. Hiervoor selecteer ik de grootste spelers op vlak van configuration management; zijnde Puppet, Ansible en Chef. Daarna bestudeer ik hun verschillen en weeg ik hun voor- en nadelen tegen elkaar af op vlak van performantie, gebruiksvriendelijkheid, schaalbaarheid, redundantie enzovoorts. Uiteindelijk trek ik hieruit mijn conclusies en beschrijf ik de verschillende tools naargelang hun nut en waarde. 
+
+Uit mijn onderzoek verwacht ik dat Puppet als performantste en schaalbaarste toolset uit de bus zal komen, mede omdat die al het langst op de markt en dus al het sterkst ontwikkeld is. Ansible daarentegen zal volgens mij het meest gebruiksvriendelijk zijn, maar zal minder toepasbaar zijn op een groot aantal servers tegelijkertijd. Tevens zal Chef een mooie alternatief zijn die zich ergens tussenin bevindt, althans volgens mij.
+
+Technologie staat niet stil en ontwikkelaars zullen steeds nieuwere en betere configuration management tools blijven ontwikkelen. Als u bekijkt waar we nu staan tegenover twintig jaar geleden op vlak van automatisering, gebruiksgemak en de omvang van datacenters ziet de toekomst er zeer rooskleurig uit voor dit domein.}
+%---------- Onderzoeksdomein en sleutelwoorden --------------------------------
+% TODO: Sleutelwoorden:
+%
+% Het eerste sleutelwoord beschrijft het onderzoeksdomein. Je kan kiezen uit
+% deze lijst:
+%
+% - Mobiele applicatieontwikkeling
+% - Webapplicatieontwikkeling
+% - Applicatieontwikkeling (andere)
+% - Systeem- en netwerkbeheer
+% - Mainframe
+% - E-business
+% - Databanken en big data
+% - Machine learning en kunstmatige intelligentie
+% - Andere (specifieer)
+%
+% De andere sleutelwoorden zijn vrij te kiezen
+
+\Keywords{Systeem- en netwerkbeheer. Configuration Management --- DevOps --- Continuous Integration} % Keywords
+\newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
+
+%---------- Titel, inhoud -----------------------------------------------------
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%------------------------------------------------------------------------------
+% Hoofdtekst
+%------------------------------------------------------------------------------
+
+%---------- Inleiding ---------------------------------------------------------
+
+\section{Introductie} % The \section*{} command stops section numbering
+\label{sec:introductie}
+
+Tijdens mijn opleiding heb ik kennis gemaakt met automatisatie technieken voor servers. Bij 'Enterprise Linux' hebben we Ansible playbooks leren toepassen en tijdens de lessen 'Windows Server' heb ik me verdiept in PowerShell. Hoewel deze lessen interessant waren, had ik het gevoel dat ik slechts een klein deeltje van het geheel had ontdekt. Na wat opzoekingswerk heb ik de wondere wereld van configuration management ontdekt. Ik was onmiddellijk gefascineerd over de mogelijkheid om clusters van servers makkelijk te beheren. In korte tijd ben ik meer te weten gekomen over onderwerpen zoals 'DevOps', 'Configuration Management' en 'Continuous Delivery'. Momenteel bestaat er een groot scala aan automation tools, toch is het niet steeds duidelijk welke tool het meest geschikt is in welke omgeving. In mijn studie wil ik de verschillen onderzoeken, de voor- en nadelen van deze tools tegen elkaar afwegen en hun performantie testen. Hierbij wil ik ook te weten komen welke tool het meest gebruiksgemak biedt, welke service het best toepasbaar is op een groot aantal servers en welke het best presteert op vlak van redundantie.
+
+Concreet luiden mijn onderzoeksvragen:
+\begin{itemize}
+\item Wat zijn de verschillen tussen Puppet, Ansible en Chef?
+\item Welke tool scoort het best op vlak van performantie?
+\item Welke van deze tools biedt het meest gebruiksgemak?
+\item In welke mate houden deze tools rekening met schaalbaarheid?
+\item Hoe kan redundantie verzekerd worden bij de verschillende tools?
+\end{itemize}
+
+
+
+
+%---------- Stand van zaken ---------------------------------------------------
+
+\section{State-of-the-art}
+\label{sec:state-of-the-art}
+
+\subsection{Literatuurstudie}
+Ten eerste ben ik begonnen met de documentatie van de te onderzoeken tools (Puppet, Ansible en Chef) te doorlopen. Dit nam veel tijd in beslag, maar het is de beste basis om mee te starten. Vervolgens ben ik online artikels gaan lezen die de toepassingen en de voor- en nadelen van elke tool omschrijven. Nadat ik een mooie basis van kennis had verworven over deze tools ben ik uiteindelijk relevante onderzoeken gaan bekijken. Zo kwam ik uit op de bachelorproef van Thomas Detemmerman ~\autocite{Detemmermanthomas2017}, maar in zijn werk onderzoekt hij enkel de voor- en nadelen voor een omschakeling van Puppet naar Ansible specifiek voor de infrastructuur bij de VRT. Daarin heb ik al kort kennis gemaakt met de verschillen tussen Puppet en Ansible. Vooral het boek DevOps for Networking ~\autocite{ArmstrongSteven2016} heeft mij veel inzicht in het praktisch verloop van het continuous delivery process bijgebracht. Dit boek beschrijft het algemene nut van DevOps en hoe Ansible helpt bij de automatisatie van het manuele, repetitieve gedeelte van de job.
+
+\subsection{Online seminaries}
+Omdat ik een visueel geheugen heb, heb ik ook veel kennis verworven aan de hand van YouTube videos over 'Configuration Management', 'DevOps' en 'Infrastructure Automation'. Tevens heb ik de interactieve online seminaries 'What is Puppet?' ~\autocite{puppet1} en 'Puppet Tutorial for Beginners' ~\autocite{puppet2} bijgewoond van 'Edureka!'. Omdat ik het gevoel had minder aandacht te hebben geschonken aan Chef ben ik op zoek gegaan naar extra informatie omtrent deze tool. Op de officiële website van Chef ben ik terecht gekomen op een zeer interessante sectie genaamd webinars. Deze educatieve filmpjes laten je op een speelse maar toch leerrijke manier kennis maken met de diverse mogelijkheden van Chef. Omdat deze videos zeer lang duurden heb ik er twee bekeken namelijk 'Chef Automate: Scaling Up your Automation' ~\autocite{chef1} en 'Understanding the Chef Server' ~\autocite{chef2}.
+
+\subsection{Hands-on approach}
+Wanneer ik het gevoel had al een grondige kennis te hebben verworven over de verschillende tools wou ik wat voeling creëren door een tool daadwerkelijk te gebruiken. Hiervoor heb ik, geleerd uit de seminaries, in virtuele machines een master-slave verbinding opgesteld door middel van het authenticatie proces en vervolgens een simpel manifest voor Puppet in de master toegepast om automatisch mariadb op alle slaves te installeren. Bovendien heb ik ook nog eens teruggeblikt op de Ansible playbooks die ik geconfigureerd heb in de lessen 'Enterprise Linux'. Een grondige uitwerking van verschillende experimenten op alle verschillende tools gebeurt in de bachelorproef zelf.
+
+% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
+% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
+%   geen onderdeel is van de zin.
+% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
+%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
+%   ...'')
+
+%---------- Methodologie ------------------------------------------------------
+\section{Methodologie}
+\label{sec:methodologie}
+
+Na het uitdiepen van mijn kennis over deze tools door middel van een zeer uitgebreide literatuurstudie zal ik de handen uit de mouwen steken. Concreet ga ik een aantal experimenten uitvoeren. De Linux testomgeving zal bestaan uit verschillende virtuele machines waarop CentOS draait. Tijdens het eerste experiment zal ik automatisch een LAMP-stack laten opzetten door elke tool op een beperkt aantal virtuele machines. Bij tweede experiment voer ik hetzelfde uit maar op een groot aantal virtuele machines om de schaalbaarheid van de tools op de proef te stellen. Als derde en laatste experiment wil ik de redundantie mogelijkheden testen van de tools door een back-up master in te stellen en te zien hoe snel deze wordt geactiveerd na de uitval van de primaire master. Uiteindelijk zal ik meten welke tool het meest performant is, welke het gemakkelijkst te configureren is en hoe ze evolueren op een groter aantal agents. Tevens zal ik de individuele verschillen en hun prestaties documenteren en catalogeren op basis van beste gebruiksomgeving. Naast de experimenten zal ik ook een vragenlijst opstellen en naar diverse IT-bedrijven van verschillende groottes sturen om te weten te komen welke tools zij gebruiken in hun omgeving en de reden daarachter.
+
+%---------- Verwachte resultaten ----------------------------------------------
+\section{Verwachte resultaten}
+\label{sec:verwachte_resultaten}
+
+Ik verwacht uit de experimenten dat Puppet de meest performante en meest schaalbare tool zal zijn die het best kan omgaan met divergerende netwerkopstellingen. Bij zeer grote netwerken zal deze tool het meest efficiënt en dus het snelst te werk gaan. Daarentegen verwacht ik dat Ansible sneller zal werken bij kleinere opstellingen door zijn agentless eigenschap. Dankzij deze eigenschap en het feit dat de playbooks zijn geschreven in de zeer simpele YAML taal, zal Ansible als meest gebruiksvriendelijke tool beschouwd worden. Chef zal volgens mij het best kunnen omgaan met redundantie omdat zijn structuur het toelaat om meerdere niveaus van masters toe te wijzen. Door deze gelaagde regeling zal er een betere load balancing zijn van de servers. Deze tool is volgens mij de grootste 'concurrent' van Puppet. Chef is vermoed ik ook tamelijk performant, schaalbaar en redelijk gebruiksvriendelijk door zijn makkelijk te begrijpen fout uitvoer. De reden dat deze tool een geduchte, opkomende tegenstander is komt door het feit dat Facebook hiervan gebruik maakt en dit gigantisch platform meewerkt aan de dagelijkse verbetering van Chef. 
+
+%---------- Verwachte conclusies ----------------------------------------------
+\section{Verwachte conclusies}
+\label{sec:verwachte_conclusies}
+
+Ik ben er bijna zeker van dat Puppet als beste en meest gebruikte tool uit de bus zal komen. De reden daarvoor is dat Puppet al het langst op de markt is en al veel tijd gekregen heeft voor ontwikkeling en om fouttolerantie te optimaliseren. Volgens mij zal Chef hier kort op volgen omdat deze tool zeer snel verbeterd wordt met behulp van professionele en marktleidende platformen. Op vlak van kleinere server clusters zal Ansible het best presteren. Door zijn opstelling zonder agents en zijn makkelijke taal is de instapdrempel tot deze tool het kleinst. Ik ben zeer nieuwsgierig en hoop dat ik deze configuration management tools mag uitwerken en tegen elkaar afwegen in mijn bachelorproef.
+
+%------------------------------------------------------------------------------
+% Referentielijst
+%------------------------------------------------------------------------------
+% TODO: de gerefereerde werken moeten in BibTeX-bestand ``biblio.bib''
+% voorkomen. Gebruik JabRef om je bibliografie bij te houden en vergeet niet
+% om compatibiliteit met Biber/BibLaTeX aan te zetten (File > Switch to
+% BibLaTeX mode)
+
+\phantomsection
+\printbibliography[heading=bibintoc]
+
+\end{document}
