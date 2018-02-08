@@ -115,17 +115,17 @@ Dit is geen officiële bronnenlijst, die is later te vinden als biblio.bib (gema
 ### Links
 
 ##### Ansible
-[Ansible Documentation](http://docs.ansible.com/)
-[Ansible Developers Documentation](http://devdocs.io/ansible/)
-[Learn Ansible](https://www.ansible.com/resources/get-started/)
-[Ansible Galaxy Roles Bertvv](https://galaxy.ansible.com/bertvv/)
+* [Ansible Documentation](http://docs.ansible.com/)
+* [Ansible Developers Documentation](http://devdocs.io/ansible/)
+* [Learn Ansible](https://www.ansible.com/resources/get-started/)
+* [Ansible Galaxy Roles Bertvv](https://galaxy.ansible.com/bertvv/)
 
 ##### Chef
-[Chef Documentation](https://docs.chef.io/)
-[Chef Developers Documentation](http://devdocs.io/chef~12/)
-[Learn Chef](https://learn.chef.io/#/)
+* [Chef Documentation](https://docs.chef.io/)
+* [Chef Developers Documentation](http://devdocs.io/chef~12/)
+* [Learn Chef](https://learn.chef.io/#/)
 
 ##### Puppet
-[Puppet Documentation](https://puppet.com/docs/puppet/5.3/index.html)
-[Puppet Learning VM](https://puppet.com/download-learning-vm)
-[Learn Puppet](https://learn.puppet.com/)
+* [Puppet Documentation](https://puppet.com/docs/puppet/5.3/index.html)
+* [Puppet Learning VM](https://puppet.com/download-learning-vm)
+* [Learn Puppet](https://learn.puppet.com/)
