@@ -21,7 +21,6 @@ Dit is geen officiële bronnenlijst, die is later te vinden als biblio.bib (gema
 * Matthias Marschall - Chef Infrastructure Automation Cookbook: Over 80 delicious recipes to automate your cloud and server infrastructure with Chef [Packt]
 * John Ewart - Managing Windows Servers with Chef: Harness the power of Chef to automate management of Windows based systems using hands on examples [Packt]
 
-
 ##### Puppet
 * Chris Barbour - Puppet Best Practices: Design patterns for maintainable code [O'Reilly]
 * Felix Frank & Martin Alfke - Puppet 4 Essentials: Acquire the skills to manage your IT infrastructure effectively with Puppet (2nd Edition) [Packt]
@@ -37,6 +36,7 @@ Dit is geen officiële bronnenlijst, die is later te vinden als biblio.bib (gema
 * Jason Slangle - Learning Puppet Security: Secure your IT environments with the powerful security rools of Puppet [Packt]
 
 ##### Algemeen (Configuration Management, Automation & Provisioning)
+* Anne Mette Jonassen Hass - Configuration Management Principles and Practice [Cockburn - Highsmith Series Editors]
 * Christian Jacquenet, Gilles Bourdon & Mohamed Boucadair - Service Automation and Dynamic Provisioning Techniques in IP/MPLS Environments [Wiley]
 * Mandi Walls - Building a DevOps Culture: DevOps is as much about culture as it is about tools [O'Reilly]
 * Michael Duffy - DevOps Automation Cookbook: Over 120 recipes covering key automation techniques through code management and virtualization offered by modern infrastructure as a service solutions [Packt]

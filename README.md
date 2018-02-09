@@ -20,7 +20,7 @@ De repository bestaat uit volgende zaken:
 
 ### Doel
 
-De student kan bestaande en innvatieve (IT-)oplossingen op een methodologisch correcte manier kritisch onderzoeken, evalueren en (her)ontwerpen of optimaliseren.
+De student kan bestaande en innovatieve (IT-)oplossingen op een methodologisch correcte manier kritisch onderzoeken, evalueren en (her)ointwerpen of optimaliseren.
 
 ### Reglement
 
@@ -48,8 +48,7 @@ evaluaties en periodegebonden evaluaties
 
 ### Deadlines
 
-* 11/12/2018: Indienen BP-voostel 
-* 22/12/2018: Feedback BP-voorstel
-* 28/05/2018: Indienen Bachelorproef
-
+* 11/12/2018: Indienen BP-voostel [Ingediend] 
+* 22/12/2018: Feedback BP-voorstel [Ontvangen]
+* 28/05/2018: Indienen Bachelorproef 
 
