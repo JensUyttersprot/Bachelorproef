@@ -1,0 +1,217 @@
+
+### Notities boek [Paul Swartout - Continuous Delivery and DevOps]
+
+Preface
+
+- Continuous Delivery = Way of working whereby quality products, normally SW asset, can be built, tested and shipped in quick succesion
+- DevOps = Way of working whereby developers and IT system operators work closely, collaboratively, and in harmony towards a common goal with little or no organizational barriers or boundaries between them
+- Optimize, streamline and improve the way of work
+
+1. Evolution of a Software House
+- CD and DevOps are complementary ways of working
+- Small software businesses need to move fast to survive, entice and retain customers
+- Deliver too soon: waste money on building solutions that the customer decides they no londer need as their minds have changed
+- Deliver too late: Another company has taken your customer -> revenue
+- Keyword: DELIVER
+
+- START OFF WITH A SMALL COMPANY
+- Culture, default behaviors, and engineering practices of small software houses are pretty good in terms of CD and DevOps
+- SOFTWARE DELIVERY PROCESS CYCLE
+	- Have a great idea
+	- Develop it
+	- Deploy it
+- Example good things:
+	- No barriers betweern developers and operations team, they are as one
+	- Developers have full access to the prodcution environment and can closely monitor their SW
+	- All areas of the business are focused on the same thing -> get SW into production environment as quickly as possible
+	- Speed of delivery is essence
+	- When things break, everyone swarm around to help fix the problems
+	- SW evolves quickly and features are added in incremental chuncks
+	- Way of working is very agile
+	- ...
+- Example bad things:
+	- Corners will be cut to hit deadlines
+	- Application security best practice is given short shrift
+	- Engineering best practices are compromised to hit deadlines
+	- Testing is not in the forefront of the developer's mind
+	- Source and version control are not used religiously
+	- SW releasing will be mainly manual and mostly an afterthought of the oevrall systemdesign
+	- Documentation is scant or nonexistent
+	- ...
+
+- AT THIS POINT, THE COMPANY GROW BIGGER
+- At first everything is good
+	- They focus on important things such as building quality SW, investing in new technologies, tools and R&D
+	- Administration, program, project management, sales, marketing, ... passed on to the new parent company that has all of this in place already
+	- DEV: new tools and processes to enable speedy delivery, scrum is adapted, ...
+	- OPS:  Data centers filled with cutting-edge kit, global network capabilities, and scalable infrastructure. Resources available to help maintain quality, control change to the platform, and platform is stable and available 24/7
+- Later on things are going less good:
+	- Increasingly difficult to ship SW
+	- Releases are getting more and more complex as the new platform grows and integrates features are added
+	- Developers are far removed from the production environment
+	- Quality is starting to suffer as last minute changes and frantic bugs are being applied to fit into release cycles
+	- Deployments are causing system downtime, planned and unplanned
+	- Deadlines are being missed and stakeholders are being let down, and trust is eroded
+	- ...
+- SOFTWARE DELIVERY PROCESS CYCLE
+	- Have a great idea
+	- Debate it
+	- Get sign off to proceed
+	- Scope out requirements
+	- Develop it
+	- Test it
+	- Fix it
+	- Schedule the release
+	- Raise required paperwork
+	- Get paperwork signed off
+	- Test it as part of release
+	- Fix it
+	- Deploy it as part of a release
+	- Fix it
+- A small number of members noticed the attrition within the organization
+- They want to expose and sort out the issues within the overal process
+- How to fix it?
+	- Seek a like-minded manager who has influence within the business and helps them form a small virtual team
+	- Identify and break down the immediate issues
+	- Ease the pain with following tools:
+		- Build and test automation
+		- Continuous Integration
+		- Automated deployment and monitoring solutions
+	- Some fundamental problems can't be fixed with tools
+		- The culture of the organization
+		- The disjointed silos within it
+- THIRD STAGE AT THIS POINT
+- Things come back together and the team regains their ability to deliver quality software
+- The CD team gets backing from up high, are dedicated to addressing the problematic culture and behaviors, and are developing ways to remove the barriers 
+- First thing to do is speak to everyone involved in the process
+- Over the next few months, they embark on:
+	- Running various in-depth sessions to understand and map out the end-to-end product delivery process
+	- Refining and simplifying tooling based upon continuous feedback from those using it
+	- Arranging offsite CD training and encourage both R&D and Ops team members to attend the training together
+	- Reducing the many handover and decision-making points throughout the SW release process
+	- Working with other business functions to gain trust and help them streamline their processes
+	- Working with R&D and operations teams to experiment with different agaile methodologies such as KanBan
+	- Openly and transparently sharing information and data around deliveries and progress being made across all areas of the business
+	- ...
+- Initiatives not easy to implement and it takes time to produce result but after some months, the process of building and delivering SW has transformed to the extend that a code change can be built, fully tested, and deployed to the production platform in munutes, many times per day
+- All at the press of a button and initiated and monitored by the developer who made the change
+- SOFTWARE DELIVERY PROCESS CYCLE
+	- Have a great idea
+	- Write test cases
+	- Develop it
+	- Test it
+	- Integrate it
+	- Deploy it
+	- Monitor it
+	- Obtain feedback for refinements
+- Everything goes very well now
+- They know they can build, test and deliver software woth consistent quality
+- FOURTH STAGE AT THIS POINT
+- There are still a few things they decide to do for further improvement
+	- Agree on realistic delivery cadence to allow a regular incremental changes without bombarding the end consumer
+	- Invest in new automated build, CI, and testing tools, which seamlessly integrate with and enhance the existing tooling
+	- Invest time and effort in nonfunctional features that will allowfor a greater visibility of what is running our in the wild
+	- Ensure that engineers delivering the mobile clients work closely with the backend engineers (DevOps) so that the client integrates seamlessly and doesn't cripple the existing production platform
+
+
+2. No Pain, No Gain
+
+- Inspect, and later on adapt
+- Problems and issues within a SW delivery process is just like the elephant in the room, and it is just as ludicrous that we simply ignore their existence
+- DEFINING THE RULES
+- With every inspection there will be some dirt that will need to be dug up
+- Questions to ask yourself:
+	- Why are things done in certain ways?
+	- Who came up with this process in the first way?
+	- Who makes the decision to do one thing over another and what right do they have to make that decision?
+	- When exactly are these decisions made?
+	- Who owns the overall product delivery process?
+	- Who owns the various steps within the process?
+	- Has anyone questioned the process previously and what happened?
+	- Does anyone actually know how the process works en to end?
+	- Why can't the management see the issues and why don't they listen to us?
+- This can produce some emotional reactions
+- To keep things on a purely professional level, you should map out some ground rules:
+	- We're trying to understand how the process as it stands came to be
+	- We want to make things better
+	- We need to see how the many processes link end to end
+	- We want to verify if our process works for us as a business
+	- We want to surface issues and problems so that everyone can see them and help fix them
+- You need to consider who you should be involved and who will add the most value
+- To further ensure you minimize emotional reactions, keep this in mind:
+	- No naming and shaming
+	- This is not a post mortem
+	- There are no right or wrong answers
+	- No detail is too trivial
+	- Facts over fiction
+	- No personal attacks or witch hunting
+	- Leave egos at the door
+- INCLUDE (ALMOST) EVERYONE
+- Needed is info from individuals who can actively contribute, are engaged, are ideally open to change, and understand and agree to the former rules
+- These people should come from all parts of the business
+- IDENTIFYING THE KEY PEOPLE
+- Ask simple questions as:
+	- Who should I ensure invite to this?
+	- Who do I normally talk to if there's a problem?
+- Of a number of different people from different parts of the business
+- Convince the people that will mostly say they're too busy because most of the times it's this people whose process they're working on is broken, but they're too busy to stop and realize
+- Some people will be very eager to participate, but they can derail the investigation problem because they might proclaim their personal opinion
+- Just ensure the people who contribute will follow the rules you have set
+- What you want is a few voices providing valuable information and data, max 30 participants
+- OPENNESS, TRANSPARENCY, AND HONESTY
+- Create an open and transparent environment in which positive behaviors and honest, constructive dialog can flourish
+- Have a distinct lack of secrets
+- You need an environment where anyone and everyone feels that they can speak their minds and contribute
+- LOCATION, LOCATION, LOCATION
+- Ideally, run your investigation collocated, on neutral ground to put away focus from the office and its day-to-day distractions
+- If that is not possible:
+	- Bring the remote teams to you
+	- Send the local teams to them
+	- Use video conferencing
+- VALUE STREAM MAPPING
+- A way to break down a product delivery process into a series of steps and handover points
+- Overall map can be laid out and analyzed to see where bottlenecks or delays occur within the flow
+- You can see which steps in within the process are not adding value
+- Ideally, a value stream map should represnet a business process.
+- Pick a recent project and break it down
+- Each box in the value map represents a step in the overall process
+- The duration value within each box represents the working time
+- The duration value in each arrow represents the wait time between each step
+- The most valuable output from this particular technique is that you can stop the obvious areas of waste
+- With this info, you can focus on these problem areas and start to look at options that will make them less wastefull and more valuable to the overall process
+
+3. Plan of attack
+- Common issues related to most software delivery processes
+	- Waste due to having too many handover and decision points in the process
+	- Waste due to unnecessary waiting time between steps
+	- Many SW changes are packaged up into large, complex releases
+	- Large and infrequent releases breed an environment for escaped defects and bugs
+	- Releases are seen as somethin to dread rather than a positive oppurtunity for change
+	- People are disengaged or there is low morale
+	- SW changes are not trusted until they have been tested many times
+	- Over complex dependencies within the WS design
+	- Tasks that are duplicated throughout the process
+- SETTING AND COMMUNICATING THE GOAL AND VISION
+- You have to be crystal clear what you plan to achieve andwho you are communicating this to
+- Best advice is KISS (keep it simple stupid)
+- List of issues that the wider business has provided, and what they want is something that will make their lives easier and allow them to do their jobs
+- Use the list and pull together a goal and a vision
+- Example of a goal: "To deliver working software 10 times per day"
+- Another example: "For engineers to release their own code"
+- Third example: "Ship code at the press of a button"
+- Once you're happy with the goal, work on the vision
+- Goal = what to achieve, Vision = how to achieve
+- After some debate, the previous problem was translated to "Allow engineers to release fully working code from their laptop to the live platform with ease"
+- Prioritized feature backlog
+- Share the goal and vision to the business and stakeholders and gain an agreement that what was proposed would address the problems and issuescaptures during the inspection stage
+- Once the goal and vision has been shared and revised, generate a story backlog
+- Keep the data and information transparent within the business network
+- STANDARDIZING VOCABULARY AND LANGUAGE
+- Small and avoidable factor that can scupper any project is the misinterpretation of what the deliverables are, normally due to both sides interpreting the same thing in a different way
+- Example: release, to project or release manager -> bundle of SW changes, which need to be tested and made live within a schedule, to developer -> working in an agile way, a release could be a one line code change, which could go live soon after he/she has completed coding and running tests
+- If some people don't understand get someone who understands to talk with them and explain
+- Another great idea is to pull together a glossary of terms that everyone can refer to
+- Terms:
+	- Continuous Delivery: A mehtod of deliveringfully working and tested software in small incremental chuncks to the production platform
+	- DevOps: A way of working that encourages the development and operations team to work together in a high collaborative way towards the same goal
+	- Continuous Integration: A method of finding software issues as early as possible within the development cycle and ensuring all parts of the overall platform talk to each other correctly
