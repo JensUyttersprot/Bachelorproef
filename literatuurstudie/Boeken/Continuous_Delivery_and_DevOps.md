@@ -35,7 +35,7 @@ Preface
 	- Engineering best practices are compromised to hit deadlines
 	- Testing is not in the forefront of the developer's mind
 	- Source and version control are not used religiously
-	- SW releasing will be mainly manual and mostly an afterthought of the oevrall systemdesign
+	- SW releasing will be mainly manual and mostly an afterthought of the overall systemdesign
 	- Documentation is scant or nonexistent
 	- ...
 
@@ -181,6 +181,7 @@ Preface
 - With this info, you can focus on these problem areas and start to look at options that will make them less wastefull and more valuable to the overall process
 
 3. Plan of attack
+
 - Common issues related to most software delivery processes
 	- Waste due to having too many handover and decision points in the process
 	- Waste due to unnecessary waiting time between steps
@@ -212,6 +213,330 @@ Preface
 - If some people don't understand get someone who understands to talk with them and explain
 - Another great idea is to pull together a glossary of terms that everyone can refer to
 - Terms:
-	- Continuous Delivery: A mehtod of deliveringfully working and tested software in small incremental chuncks to the production platform
+	- Continuous Delivery: A method of deliveringfully working and tested software in small incremental chuncks to the production platform
 	- DevOps: A way of working that encourages the development and operations team to work together in a high collaborative way towards the same goal
 	- Continuous Integration: A method of finding software issues as early as possible within the development cycle and ensuring all parts of the overall platform talk to each other correctly
+- CD and DevOps will change the way the business thinks, plans, and operates
+- Development + Operations + The rest of the business = DevOps
+- You will need a team of like-minded individuals working on the project accros the business to mak this successful
+- But in terms of HR, sales, marketing, finance and so on, it may not be viable to have such individuals dedicated full-time to the project
+- However you should ensure they allocate some of their time and make themselves available when needed
+- Important: when/if setting up a dedicated team, it must be made up of more than just developers
+- Example:
+	- Senior Manager
+	- Scrum Master
+	- Developers
+	- Testers
+	- Product Owner
+	- Change Controller
+	- Operations
+	- Architect
+	- Extended Team (HR, Marketing, ...)
+- THE IMPORTANCE OF EVANGELISM
+- When you introduce a change to anything, you need evangelists to ensure everyone who needs to know about the change, knows it
+- Ground rules:
+	- You need to believe in it 100% when evangelizing
+	- Preach and lead by example
+	- Be very, very patient with the people who will not get it at first
+	- Remember your target audience and tailor your message accordingly
+	- Developers -> technical stuff, new and shiny
+	- System operators -> stability and predictability
+	- Management types -> efficiencies, optimized processes and risk reduction
+	- Keep it relevant and consistent
+- There will be some costs taht are indirectly caused by the project
+- Examples:
+	- Resources assigned to CD and DevOps project may not be available for other tasks
+	- Changes to business process documentation and/or business process maps
+	- Changes to standard operationg procedures
+	- Changes to hosting
+	- ...
+
+4. Culture and behaviors
+
+- ALL ROADS LEAD TO CULTURE
+- CD and DevOps are ways of working
+- Culture has aspects: 
+	- Transparency
+	- Change is good
+	- Rewarding good behaviors
+	- Grassroots innovation
+	- Accountability
+	- No blame
+	- Embrace failure
+	- Trust
+	- Collaboration	
+	- Honesty and openness
+- Culture is central to:
+	- Tools & Techniques
+	- Processes
+	- Behaviors
+	- Communication
+	- Environment
+- Do's
+	- Allow freedom of expression
+	- Encouraging anyone and everyone to have their say
+	- Being patient with the quiet ones as it will take a bit longer for them to open up
+	- Ensure management and HR understand why openness and honesty are essential
+	- Getting management to contribute and lead by example
+	- Having a distinct lack of secrets
+- Don't's
+	- Having a closed and secretive encironment and culture
+	- Ignoring or dismissing people's opinions and views
+	- Using feedback in a negative way
+	- Being impatient
+	- Do as I say not as I do attitudes
+
+- PHYSICAL ENVIRONMENT
+- Preferably open-plan with no physical barriers
+	- Keep the office doors open
+	- Set aside an area for communal gatherings
+	- Have regular sessions where everyone gathers to chat and chill out
+	- Hold a daily Scrum
+	- Remove cubicles and remove partitioned walls
+	- Implement some sort of collaborative forum/messaging/chat solution
+- BLAME SLOW, LEARN QUICKLY
+- As blame diminishes, learning will grow as people will no longer deel that they have to keep looking over their shoulders and only stick to what they know or are told to do
+- Do's
+	- Accepting accidents will happen
+	- Encouraging a fail fast, learn quickly culture
+	- Encouraging accountability
+	- Encouraging the open and honest sharing of lessons learned
+	- Not making a big thing of issues
+	- Focusing on individuals who don't exhibit good behaviors
+- Don't's
+	- Pointing fingers
+	- Calling out an individual's failings
+	- Blaming before all of the facts are known
+	- Halting progress
+- RECOGNIZING DEV AND OPS TEAMS ARE INCENTIVIZED CAN HAVE AN IMPACT
+- Incentivising developers to deliver more quickly is at odds with incentivising operations teams with keeping things stable and safe
+- Dev	
+	- Change
+	- Speed
+	- Risk
+- Ops
+	- Stability
+	- Predictability
+	- Certainty
+- How do you quare the circle and allow a steady stream of change to flow through without having the ops team up in arms about the fact their bonus is at risk?
+- Whatever you do in regards to incentivizing and rewarding people, you need to instill a sense of positivity around change, while at the same time ensuring risk is reduced
+- BEING TRANSPARENT
+- The wider business trusts the product delivery teams to deliver what is needed when it is needed, and the operations teams know what is coming
+- Complement highly technical information on office displays, with easy to read and understand data related to your CD and DevOps process
+- You should ne looking at displaying the following kinds of information:	
+	- Number of releases this day, week, month, ... against the number yesterday, last week, last month, ...
+	- The release queue and progress of current release through the process and who initiated it
+	- Production system availability (current and historical)
+	- Scrum/KanBan board's backlog, WIP, work completed along with related stats
+	- The latest business information
+
+5. Approaches, Tools and Techniques
+
+- Fundamentals in terms of SW engineering:
+	- Commit and merge small code chnages frequently into a source control repository
+	- So not make code overly complex and keep it maintainable and documented
+	- Avoid introducing breaking changes
+	- Run automatated tests frequently
+	- If you have a CI solution that controls build and test suite, run it frequently
+	- Use regular code revies
+	- Refactor as you go
+- Source control not only restricted to SW source code;
+	- System configuration, start-up scripts, server configuration, network configuration, ...
+- Small, frequent, and simple changes
+- Making a small, isolated tweak to server configuration is much safer and easier to control and monitor than making sweeping changes all at once
+- SOURCE CONTROL TOOLS: http://en.wikipedia.org/wiki/Comparison_of_revision_control_software 
+- If you change or upgrade the OS, you must ensure that there are no breaking changes that will cause the consumer to fail
+- To overcome this, open and honest peer-working practices should go some way to help 
+- OPEN AND HONEST PEER-WORKING PRACTICES
+- Changes made to any part of the platform run a risk, and having more than one pair of eyes to review will help reduce this risk
+- FAIL FAST AND OFTEN
+- Test-driven development are based on the principles of exposing faults with SW early on the process
+- If a bug is created but is not found until it has gone live, the cost of rectifying the bug could be relatively high
+- AUTOMATE BUILDS AND TESTS
+- Implementing automation will help speed things up, keep things consistent, and provide confidence
+- CONTINUOUS INTEGRATION
+- CI is a tried and tested method of ensuring that given SW asset builds correctly and plays nicely with the rest of the platform
+- CONTINUOUS INTEGRATION TOOLS: http://en.wikipedia.org/wiki/Comparison_of_continuous_integration_software
+- CI systems are basically SW solutions that orchestrate the execution of your automated scripts when certain events occur, for example, when you commit a change to source control
+- CI jobs contain a list of activities that need to run in quick succesion
+- Example: Get the latest version of source from source control -> Compile to an executable -> Deploy the binary to a test environment -> Get the automated tests from source control -> Run them -> Capture the results
+- Powerfull tools, automated tests pass, the CI tool adds the executable to your binary repository, if automated tests fail, it can e-mail the results to the engineering team
+- HOW MANY ENVIRONMENTS ARE ENOUGH?
+- Depends on way of working, engineering setup and platform
+- Ideal number is two: Development and Production
+- For the development environment, you could look at virtualization on the desktop (using tools such as Vagrant or Docker) where you can spin up a virtual copy of your production environment on a developer's workstation
+- DEVELOPING A PRODUCTION-LIKE ENVIRONMENT
+- Mostly three environments: Develop, Test and Production
+- Always work with realistic subsets of like-live data.
+- Allow access to production environment
+- Work together with DBA and SecOps team
+- CD TOOLING
+- CD tools are considered as the natural evolution of the aforementioned CI tooling.
+- Instead of controlling and orchestrating the build and test process, CD tools control and orchestrate the act of deploying the built SW components to the various environments you have
+- Before committing to a tool or solution, consider the following;
+	- Can it deploy the same binary to multiple environments?
+	- Can it seamlessly access the binary and source repositories?
+	- Can it remotely invoke and control the installation process on the server? 
+	- Is it capable of deploying database changes?
+	- Does it have the functionality to allow for queuing up of releases?
+	- Does it contain an audit of what has been deployed, when and by whom?
+	- Is it secure?
+	- Can it interact with the infrastructure to allow for no-downtime deployments?
+	- Can it orchestrate automated infrastructure provisioning?
+	- Can it be extended to interact with other systems and solutions such as e-mail and change-management, issue-management, and project-management solutions?
+	- Does it have simple and easy-to-understand dashboards that can be displayed on big screens around the office?
+	- Can interact and orchistrate the CI solution?
+	- Will it grow with our needs?
+	- Is it simple enough for anyone and everyone to use?
+- AUTOMATED PROVISIONING
+- If you have a platform that can run on a virtual infrastructure, you can consider automated provisioning as part of the deployment process
+- Also available for physical environments but can be overly complex and costly
+- Extremely useful and powerful but complex to implement
+- Automated provisioning solutions allow you to programmatically talk to a system; provide it with a recipe that contains things such as server spec, operating system, configuration, and so on; and it spits out a server at the other end
+- IaaS and PaaS
+- IaC is code written as a development language that defines the recipe and the process of provisioning
+- Act of deployment
+	- Provision a server your software asset needs to run on
+	- Deploy and install the software asset onto the server
+	- Add the new server to your platform
+	- Start using it
+- NO DOWNTIME DEPLOYMENTS
+- Release-related incidents can and will happen
+- There are many simple things that can be done to remove the need for downtime deployments
+	- Ensure the never break your consumer rule is followed
+	- Ensure your changes are small and discrete
+	- Implement automated provisioning and integrate this as part of your CD tooling if possible
+	- Implement load balancers and have the CD tooling orchestrate servers in and our of the pool during the deployment
+	- If you cannot avoid implementing breaking changes, then do so gradually
+- the same rules apply across al environments
+- THE CLOUD
+- Adopting cloud-based technologies can help with accelerating your CD and DevOps adoption
+- The other way around also applies
+- You'll need closely-knit Dev and Ops teams that can work seamlessly and collaboratively to implement, set up, and manage your virtual IaC-based environment
+- MONITORING
+- One of the most important ways to ensure CD and DevOps is working is to monitor
+- If all of the environments used within the CD process are constantly being observed, then the impact of any change is easy to see
+- Many monitoring tools available
+- Nagios is for monitoring infrastructure and servers
+- Graphite is for collecting application metrics
+- Logstash is for analyzing server log files
+- You should try and aggregate the date from these tools and present a unified view of how the production platform is coping and functioning
+- MANUAL SOLUTIONS
+- Simple manual solutions you can use include:
+	- Use collaborative tools for real-time communication between everyone (IRC, Chat Rooms, ...) and integrate this into your CD tooling so that deployments are announced and can be followed by all
+	- Set up a workstation within the operations area, called the deployment station, and make sure that's the only workstation from where live deployments can be run from
+	- If instant rollback is needed should a deployment fail, consider simple ways of rolling back, such as deploying the previous version of the component using CD tooling
+	- Consistently inspect and adapt through regular retrospectives to see what is working and what is not
+
+6. Hurdles along the way
+
+- Some hurdles you may encounter along the way
+	- Individuals who don't see the need for change
+	- Individuals who want things to go quicker and are impatient
+	- The way people react to change at an emotional level
+	- A lack of external understanding or visibility
+	- Red tape and heavyweight corporate processes
+	- Geographically diverse teams
+	- Unforeseen issues with the tooling chosen for the toolkit
+	- Recruitement
+- Be professional to the laggards
+- Focus on the innovators and followers
+
+7. Vital Measurements
+
+- Being able to understand and demonstrate progress will definitely add value to you and everyone else who is on the CD and DevOps journey
+- Start early so you will have a then and now comparison in the future
+- How to measure best practice:
+	- Overall code quality
+	- Adherence to coding rules and standards
+	- Code versus comments
+	- Code complexity
+	- Code duplication
+	- Unit test coverage
+	- Commit rates
+	- Mean time between failures
+	- Mean time to resolution
+	- Bug escape distance
+	- Fix bounce rate
+- When pooled together, you can get a very detailed picture of how things stand
+- SIMPLE QUALITY METRICS
+- Mean time between failures (MTBF): This will help you measure how often problems or failures are found by end users, the longer the time between failures = the greater the stability and quality of the overall platform
+- Mean time to resolution (MTTR): This will help you measure the time taken between an issue being found and being fixed
+- Bug escape distance: This will help you measure when an issue is found
+- INCORPORATE AUTOMATED TESTS
+- We've looked at using automates tests for SW components as it is being released
+- But what if we group these tests together and run them continuously against a given environment
+- This way, you would end up with a vast majority of the platform being tested over and over again
+- COMBINING AUTOMATED TESTS AND SYSTEM MONITORING
+- You could combine automated test results with the output of your monitoring solution
+- Pinpointing the root cause
+- But you need data and metrics from deep within the bowels of the platform to fully understand what is going on
+- Best way is to build something in the SW itself
+	- Incorporate health-check function within your SW APIs
+	- Extend your SW platform to push low-level metrics data to a central data collection solution periodically
+- IMPACT OF CD AND DEVOPS
+- Key performance indicators
+	- Number of active users
+	- Revenue
+	- Page visits
+	- ...
+
+8. Are We There Yet?
+
+- Keep repeating these processes
+- New problems will arise and you will have to deal with them
+- A VICTIM OF YOUR OWN SUCCESS
+- People will expect more things, faster
+- This is kind of a luxury problem, good to have
+- PLAN, DO, CHECK, ACT
+- It is a framework and approach that you can use for continuous and iterative improvement
+- Use PDCA with the tools and techniques mentioned
+- EXIT STAGE LEFT
+- The team now uses and learns the tools and techniques
+- They can start to identify the boulders themselves
+- Now help others help theirselves  
+
+9. The Future is Bright
+
+- You have become the holder of knowledge and experience
+- The CD and DevOps subject-matter expert
+- Now it is the time to apply your studd to these new challenges and opportunities
+- REACTIVE PERFORMANCE AND LOAD TESTING
+- You could run an experiment to incrementally apply additional load to the platform while it's being used
+- As the load increases, you start to see where the pain points are
+- If issues are pinpointed, they could apply patches in real time using CD tooling while the load is still in place, giving instant feedback
+- SECURITY PATCHING AND SAVING YOUR BACON
+- Adopting CD and DevOps can provide major security benefits
+- Have a tool that you can run within your closely monitored environment to try and break it
+
+APPENDIX TOOLS
+- Jenkins: An award-winning and world renowned open source CI tool
+- GIT: A free and open-source distributed version-control system
+- GitHub: An online-hosted community solution based on GIT
+- Graphite: A highly-scalable real-time graphing system that allows you to publish metric data from within your application
+- Tasseo: A simple-to-use Graphite dashboard
+- SonarQube: An open platform to manage code quality
+- Ganglia: A scalable distributed monitoring system for high-performance computing systems
+- Nagios: A powerful monitoring system that enables organizations to identify and resolve IT-infrastructure problems before they affect critical business processes
+- Dbdeploy: An open source database change management tool
+- Puppet Labs: A tool to automate the creation and maintenance of IT infrastructure
+- Chef: Another tool to automate the creation and maintenance of IT infrastructure
+- Vagrant: A tool to build complete development environments using automation
+- Docker: An open platform for distributed applications
+- Yammer: An enterprise private social network
+- HipChat: A private group-chat and team collaboration tool
+- IRC: The granddaddy of collaboration and chat tools
+- Campfire: A private group-chat and team collaboration tool
+- Hubot: An automated "bot" that can be set up within most chat-room systems
+- Trello: An online scrum/Kanban board solution
+- AgileZen: 
+- Vagrant: A tool to build complete development environments using automation
+- Docker: An open platform for distributed applications
+- Yammer: An enterprise private social network
+- HipChat: A private group-chat and team collaboration tool
+- IRC: The granddaddy of collaboration and chat tools
+- Campfire: A private group-chat and team collaboration tool
+- Hubot: An automated "bot" that can be set up within most chat-room systems
+- Trello: An online scrum/Kanban board solution
+- AgileZen: Another online scrum/Kanban board solution
+
