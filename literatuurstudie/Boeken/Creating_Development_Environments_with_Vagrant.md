@@ -256,3 +256,295 @@ file { $cache_directories:
 	group => "www-data",
 	mode => 777,
 }
+- CRON MANAGEMENT
+- The CRON resource type lets us use Puppet to manage CRON jobs, which we need to run on the machine
+- cron { web_cron:
+	command => "/usr/bin/php /vagrant/cron.php",
+		user => "root"
+			hour => [1-4],
+				minute => [0,30],
+	}
+
+}
+- RUNNING COMMANDS	
+- The EXEC resource type allows us to run commands through the terminal on the machine we are provisioning
+- One caveat with the EXEC command is that if you re-provision with Puppet it will re-run the command, which depending on the command could be damaging
+- But, the CREATES parameter tells Puppet of a file that will be created when the command is run, if Puppet finds that file, it knows that it has already been run and won't run again
+- Example: This will cause the PHP composer tool to download dependencies
+- Because of the lock file that is created, we can use the CREATES parameter to prevent the command from being executed if it has previously been executed and has created the lock file
+- exec { "compose":
+	command => '/bin/rm -rfv /var/www/repo/vendor/* && /bin/rm -f /var/www/repo/composer.lock && /usr/bin/curl -s http://getcomposer.org/installer | /usr/bin/php && cd /var/www/repo && /usr/bin/php /var/www/repo/composer.phar install',
+		require =>  [Package['curl'], Package['git-core']],
+			creates => "/var/www/repo/composer.lock"
+				timeout => 0
+}
+- MANAGE USERS AND GROUPS
+	1. CREATING GROUPS
+	2. CREATING USERS
+	3. UPDATING THE SUDOERS FILE
+1. CREATING GROUPS
+- group { "wheel":
+	ensure => "present",
+}
+2. CREATING USERS
+- user { "developer":
+	ensure => "present",
+	gid => "wheel",
+	shell => "/bin/bash",
+	home => "/home/developer",
+	managehome => true,
+	password => "passwordtest"
+	require => Group["wheel"]
+}
+3. UPDATING THE SUDOERS FILE
+- We can't define a user or group as having elevated privileges by using the user and group resource types
+- We can use the EXEC command to push some text to the end of a sudoers file
+- exec { "/bin/echo \"%wheel ALL=(ALL) ALL\" >> /etc/sudoers":
+	require => Group["wheel"]
+}
+- SUBSCRIBE AND REFRESH ONLY
+- Sometime we want to have a Puppet command run multiple times when other commands have finished. One example is restarting puppet
+- We would want to do this:
+	- When we import a new configuration file
+	- When we install Apache modules such as PHP support and mod_rewrite
+	- If we add new virtual hosts
+- The SUBSCRIBE parameter instructs the command to run every time any of the commands in the subscribe option have been run 
+- The REFRESHONLY parameter, when set to true, instructs the command to only run when one of the commands it subscribes to, has run
+- exec { "reload-apache2":
+	command => "/etc/init.d/apache2 reload",
+	refreshonly => true,
+	subscribe => File['/etc/apache2/sites-available/default'],
+}
+- PUPPET MODULES
+- There are many existing, well written, re-usable Puppet modules freely available to use
+	- http://forge.puppetlabs.com/
+
+4. PROVISIONING WITH CHEF
+
+- Chef is another provisioning tool which makes it easy for us to take a base OS install and turn it into a full-fledged server suited to the needs
+- The configuration which determines how the server needs to be setup can be stored within our Vagrant project and can be sahred among teammates
+- Info about how the server should be configured -> Chef recipes (written in Ruby
+- We will use Chef Solo (standalone mode)
+- Everything runs from one machine
+- Chef also has server-client capabilities where you can define coockbooks and roles for all the servers in your infrastructure on a central host
+- Chef is also idempotent
+- CREATING COOCKBOOKS AND RECIPES WITH CHEF
+- Chef instructions are recipes, which are bundled together in coockbooks
+- Cookbooks can contain multiple recipes and other resources such as templates and files
+- A cookbook is like a folder , with at least one recipe
+- Default recipe file is default.rb
+- Puppet & Chef both use Ruby
+- Puppet is a Domain Specific Language based on Ruby
+- Chef uses Ruby itself
+- RESOURCES
+- Chef uses resources to define actions and operations
+- Resources are mapped to a Chef code, which varies depending on OS used
+- Ubuntu mapped to apt-get, Fedora mapped to yum
+- Resource types available:
+	- Cron
+	- Execute
+	- File
+	- Group
+	- Package
+	- Service
+	- Template
+	- User
+- INSTALLING SOFTWARE
+- Let's say we want to install Apache on our server
+- Proceed the following process:
+	1. Update our package manager
+	2. Install the Apache package
+	3. Run the Apache service
+1. UPDATING OUR PACKAGE MANAGER
+- execute "update-package-manager" do
+	command "apt-get update"
+	ignore_failure true
+	timeout 6000
+  end
+- timeout 6000 overwrites the default of 3600 seconds 
+- INSTALLING THE APACHE PACKAGE
+- package "apache2" do
+	action :install
+  end
+- RUNNING THE APACHE SERVICE
+- service "apache2" do
+	supports :status => true, :restart => true, :reload => true
+		action [ :enable, :start]
+  end
+- UNDERSTANDING FILE MANAGEMENT
+- We can:
+	1. Copy Files
+	2. Create symlinks
+	3. Create folders
+	4. Create multiple folders in one go
+1. COPY FILES
+- cookbook_file "/etc/apache2/sites-available/default" do
+	backup false
+	action :create_if_missing
+  end
+2. CREATE SYMLINKS
+- link "/var/www/public" do
+	to "/vagrant/src/public"
+  end
+3. CREATE FOLDERS
+- directory "/var/www/uploads" do 
+	owner "root"
+	group "root"
+	mode 00777
+	action :create
+  end
+4. CREATE MULTIPLE FOLDERS IN ONE GO
+- %w{dir1 dir2 dir3}.each do |dir|
+	directory "/tmp/mydirs/#{dir}" do
+	mode 00777
+	owner "www-data"
+	group "www-data"
+	action :create
+	end
+  end
+- MANAGING CRON
+- cron "web_cron" do
+	action :create
+	command "/usr/bin/php /vagrant/cron.php"
+	user "root"
+	hour "1-4"
+	minute "0,30"
+  end
+- RUNNING COMMANDS
+- execute "compose" do
+	command "/bin/rm -rfv /var/www/repo/vendor/* && /bin/rm -f /var/www/repo/composer.lock && /usr/bin/curl -s http://getcomposer.org/installer | /usr/bin/php && cd /var/www/repo && /usr/bin/php /var/www/repo/composer.phar install"
+	creates "/var/www/repo/composer.lock"
+	timeout 6000
+  end
+- MANAGING USERS AND GROUPS
+- We can: 
+	1. Create groups
+	2. Create users
+	3. Update the sudoers file
+1. CREATE GROUPS
+- group "wheel" do
+	action:create
+  end
+2. CREATE USERS
+- user "developer" do
+	action :create
+	gid "wheel" 
+	shell "/bin/bash"
+	home "/home/developer"
+	supports {:manage_home => true}
+	password "passwordtest"
+  end
+3. UPDATE THE SUDOERS FILE
+- /bin/echo \"%wheel ALL=(ALL) ALL\" >> /etc/sudoers
+- KNOWING COMMON RESOURCE FUNCTIONALITIES
+- There is also a set of common functionality available to all resources
+	- The ability to do nothing with the :nothing action
+	- Shared attributes available to all resources: ignore_failure, provider, retries, retry_delay, and supports
+	- The not_if and only_if conditions to ensure actions only run when certain conditions are met
+	- Notifications to instruct other resources that another action has completed
+- USING CHEF COOKBOOKS
+- There are many existing, well-written, re-usable chef cookbooks available:
+	- http://community.opscode.com/cookbooks
+- USING CHEF TO PROVISION SERVERS
+- Chef can run in its own right
+- Provided Chef is installed, you can use chef-solo command, passing it with the location of the configuration file to use and a JSON file which contains attributes we wish to use:
+	- chef-solo -c /home/michael/chefconfig.rb -j /home/michael/attributes.json
+
+5. Provisioning with Vagrant using Puppet and Chef
+
+- PROVISIONING WITHIN VAGRANT
+- Vagrant relies on base boxes for the guest virtual machine; these are specifically pre-configured VM images, which have certain SW packages pre-installed and pre-configured
+- Puppet & Chef are two such pre-installed SW packages
+- Vagrant has its own interface through to these packages from the host machine
+- We can provide some configuration in our Vagrant file and Vagrant will pass this information to the relevant provisioners on the guest VM
+- PROVISIONING WITH PUPPET ON VAGRANT
+- Vagrant supports two methods of using Puppet:
+	1. Puppet in standalone mode, by using the Puppet apply command on the VM
+	2. Puppet in client/server mode, whereby the VM will be configured from a central server
+1. USING PUPPET IN A STANDALONE MODE
+- We simply tell Vagrant where we have to put our Puppet manifests and modules, and what manifest should be run
+- In vagrant file: config.vm.provision :puppet
+- Along with this configuration, we will need a Puppet manifest called default.pp in the manifests folder of our project root
+- This will instruct Vagrant to run the Puppet provisioner either when the machine boots up or if we run the Vagrant provision command
+- We can modify the main options by provisioning configuration options as opposed to just telling Vagrant to provision with Puppet.
+- We can specify the options for the location of manifests (puppet.manifests_path)
+- The name of the Puppet manifest to apply (puppet.manifests_file)
+- The location of any Puppet modules which we may reference within our Puppet manifest (puppet.module_path)
+- config.vm.provision :puppet do |puppet|
+	puppet.manifests_path = "provision/manifests"
+	puppet.manifests_file = "default.pp"
+	puppet.module_path = "provision/modules"
+  end
+- It is important for us to have the ability to change the manifest file, as Vagrant supports a multi VM environment, where a single project can have a number of virtual machines
+- With this setup, we would need to tell Vagrant which manfest file to use for each of the machines, so that a web server can be properly configured as a web server and a DB server as a DB server
+2. USING PUPPET IN CLIENT/SERVER MODE
+- The configuration required for this is minimal, we simply tell Vagrant the address of the Puppet server we are using, and the name of our node
+- config.vm.provision :puppet_server do |puppet|
+	puppet.puppet_server = "puppet.internal.michaelpeacock.co.uk"
+	puppet.puppet_node = "vm.internal.michaelpeacock.co.uk"
+  end
+- PROVISIONING WITH CHEF ON VAGRANT
+- Vagrant also supports two methods of using Chef:
+	1. Chef solo
+	2. Chef in client/server mode with Chef client
+1. USING CHEF SOLO
+- The simplest way to use this within our project is simply to provide a Chef run list to Vagrant, this tells Vagrant which cookbooks should be applied
+- config.vm.provision :chef_solo do |chef|
+	chef.add_recipe "php"
+  end
+- This takes the PHP cookbook from the default cookbooks folder and applies it to the VM
+- Cookbooks are stored in the cookbooks folder within the project root
+- The chef.cookbooks_path setting allows us to override the cookbooks folder location
+- config.vm.provision :chef_solo do |chef|
+	chef.cookbooks_path = "provision/cookbooks"
+  end
+- We can also use Chef Roles by providing:
+	- The location of the roles folder
+	- The roles we wish to add to the VM
+- config.vm.provision :chef_solo do |chef|
+	chef.roles_path = "provision/roles"
+	chef.add_role("web")
+  end
+2. USING CHEF IN A CLIENT/SERVER MODE
+- To use Chef Client, we will need to tell Vagrant where the Chef Server is located and provide the authorization ket which will be used to authenticate the VM with the Server
+- config.vm.provision :chef_client do |chef|
+	chef.chef_server_url = "http://chef.internal.michaelpeacock.co.uk:4000/"
+	chef.validation_key_path = "key.pem"
+  end
+- OTHER BUILT-IN PROVISIONERS
+- In addition to Puppet & Chef provisioning options with Vagrant, there are two other methods:
+	- SSH: Invoking commands via the terminal of the VM automatically through Vagrant
+	- Ansible: A tool similar to Puppet & Chef, which is configured through a series of YAML files to define how a system should be provisioned
+- PROVISIONING WITH SSH
+- Two ways to use SSH provisioning:
+	- Path: a file to execute
+	- Inline: providing specific commands to run
+- Both of these are shown as follows:
+	- config.vm.provision :shell, :path => "provision/setup.sh"
+	- config.vm.provision :shell, :inline => "apt-get install apache2"
+- ANSIBLE PLAYBOOKS
+- In order to use Ansible within Vagrant project, we need to tell Vagrant where the playbook and inventory files are
+- config.vm.provision :ansible do |ansible|
+	ansible.playbook = "provision/playbook.yml"
+	ansible/inventory_file = "provision/hosts"
+  end
+- USING MULTIPLE PROVISIONERS ON A SINGLE PROJECT
+- We can use multiple provisioners within a single project
+- We simply need to put them in the order we wish for them to be executed
+- vagrant.configure("2") do |config|
+	config.vm.box = "precise64"
+	config.vm.provision :shell, :inline => "apt-get-update"
+	config.vm.provision :puppet do |puppet|
+		puppet.manifests_path = "provision/manifests"
+		puppet.manifest_file = "default.pp"
+		puppet.module_path = "provision/modules"
+	end
+  end
+- OVERRIDING PROVISIONING VIA THE COMMAND LINE
+- There may be instances where we want to restrict or enforce the execution of provisioning or even a specific provisioner within a project
+- The following commands are all executed from the host machine:
+	- We can cancel a running provision by pressing CMD+C at the terminal
+	- We can instruct Vagrant to re-run provisioning on a VM by using vagrant provision command
+	- We can also add no-provision to the up and reload commands to instruct Vagrant to not run the provisioning tools when performing the up and reload actions
+	- We can also provision with hust a specific provisioner should we wish, we would run vagrant provision provision-with puppet
+ 
